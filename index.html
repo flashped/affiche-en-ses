@@ -14,20 +14,6 @@
         <img src="image1.jpg" alt="affiche">
     </div>
 
-    <script>
-        // Fonction pour récupérer les paramètres d'URL
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-
-        // Afficher l'image Spiderman si le paramètre "show" est égal à "spiderman"
-        const imageName = getQueryParam('show');
-        if (imageName === "spiderman") {
-            const imageElement = document.getElementById('dynamicImage');
-            imageElement.src = "https://th.bing.com/th/id/R.b4725ac1d5b511089395f76f1514e3c8?rik=d6gLifEi6v3lXQ&pid=ImgRaw&r=0";
-            imageElement.style.display = "block";
-        }
-    </script>
+    
 </body>
 </html>
