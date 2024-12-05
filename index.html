@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>QR Code Spiderman</title>
-    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+    <script>
+        // Fonction pour récupérer l'état de l'image depuis le serveur
+        function checkForImage() {
+            fetch('/show-image')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.showImage) {
+                        document.getElementById("imageToShow").style.display = "block";
+                    }
+                });
+        }
+
+        // Vérifier chaque 2 secondes si l'image doit être affichée
+        setInterval(checkForImage, 2000);
+    </script>
 </head>
 <body>
     <div class="rien">
@@ -14,29 +27,5 @@
     <div class="afficheM">
         <img src="image1.jpg" alt="affiche" style="display:none;" id="imageToShow">
     </div>
-
-    <div id="qr-reader" style="width: 100%;"></div>
-
-    <script>
-        function onScanSuccess(qrCodeMessage) {
-            // Dès qu'un QR code est scanné, on affiche l'image
-            document.getElementById("imageToShow").style.display = "block";
-        }
-
-        function onScanError(errorMessage) {
-            // Log l'erreur si nécessaire, mais pour cet exemple on ne fait rien ici
-        }
-
-        // Initialisation du lecteur de QR Code
-        const html5QrCode = new Html5Qrcode("qr-reader");
-
-        // Démarre la lecture du QR code
-        html5QrCode.start(
-            { facingMode: "environment" }, // Utiliser l'appareil photo arrière
-            { fps: 10, qrbox: 250 }, // Paramètres pour la lecture
-            onScanSuccess,
-            onScanError
-        );
-    </script>
 </body>
 </html>
