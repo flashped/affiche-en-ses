@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>QR Code Spiderman</title>
+</head>
+<body>
+    <div class="rien">
+        <img id="dynamicImage" src="" alt="spiderman" style="display:none;">
+    </div>
+    <div class="afficheM">
+        <img src="https://th.bing.com/th/id/R.302eb18f3477d2b6fd8e1dd71218403c?rik=lBXo9h0iv7bnxw&riu=http%3a%2f%2fsurf-film.com%2fwp-content%2fuploads%2fAffiche_FFS17-01-01.jpg&ehk=%2biHmQUo%2bGw8k1JXFTgOaCVrLXbtyvu%2fEuLB61s6NPS0%3d&risl=&pid=ImgRaw&r=0" alt="affiche">
+    </div>
+
+    <script>
+        // Fonction pour récupérer les paramètres d'URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Afficher l'image Spiderman si le paramètre "show" est égal à "spiderman"
+        const imageName = getQueryParam('show');
+        if (imageName === "spiderman") {
+            const imageElement = document.getElementById('dynamicImage');
+            imageElement.src = "https://th.bing.com/th/id/R.b4725ac1d5b511089395f76f1514e3c8?rik=d6gLifEi6v3lXQ&pid=ImgRaw&r=0";
+            imageElement.style.display = "block";
+        }
+    </script>
+</body>
+</html>
